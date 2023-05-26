@@ -1,4 +1,5 @@
-export function App() {
+import { RoutesMain } from "./routes";
 
-  return;
+export function App() {
+  return <RoutesMain />;
 }
