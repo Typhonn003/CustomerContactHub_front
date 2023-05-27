@@ -8,6 +8,7 @@ interface InputProps {
   placeholder?: string;
   register?: object;
   defaultValue?: string;
+  loading?: boolean;
   error?: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export function Input({
   placeholder,
   register,
   defaultValue,
+  loading,
   error,
 }: InputProps) {
   return (
@@ -29,6 +31,7 @@ export function Input({
         id={id}
         {...register}
         defaultValue={defaultValue}
+        disabled={loading}
       />
       {error}
     </StyledInput>

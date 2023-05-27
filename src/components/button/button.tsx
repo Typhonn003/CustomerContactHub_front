@@ -4,11 +4,12 @@ interface ButtonProps {
   children?: string;
   type?: "button" | "reset" | "submit";
   color?: "indigo" | "pink";
+  loading?: boolean;
 }
 
-export function Button({ children, type, color }: ButtonProps) {
+export function Button({ children, type, color, loading }: ButtonProps) {
   return (
-    <StyledButton color={color} type={type}>
+    <StyledButton color={color} type={type} disabled={loading}>
       {children}
     </StyledButton>
   );

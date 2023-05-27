@@ -34,4 +34,9 @@ export const StyledButton = styled("button", {
   defaultVariants: {
     color: "indigo",
   },
+  states: {
+    disabled: {
+      
+    }
+  },
 });
