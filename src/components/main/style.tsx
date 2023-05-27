@@ -1,14 +1,11 @@
 import { keyframes, styled } from "../../style/stitches.config";
 
-const neonUpTitle = keyframes({
+const glitchTitle = keyframes({
   "0%": {
-    textShadow: "0 0 0 rgba(255, 105, 180, 0.8)",
-  },
-  "50%": {
-    textShadow: "0 0 10px rgba(255, 20, 147, 0.9)",
+    textShadow: "2px 2px 0px #e30c9f, -2px -2px 0px #164b9b",
   },
   "100%": {
-    textShadow: "0 0 0 rgba(255, 105, 180, 0.8)",
+    textShadow: "2px 2px 0px #164b9b, -2px -2px 0px #e30c9f",
   },
 });
 
@@ -20,10 +17,10 @@ export const StyledMain = styled("main", {
   flexDirection: "column",
   "& h1": {
     textAlign: "center",
-    color: "$pink10",
+    color: "White",
     marginBottom: "2rem",
     cursor: "default",
-    animation: `${neonUpTitle} 2s infinite`,
+    animation: `${glitchTitle} .1s infinite`,
   },
   "& h2": {
     textAlign: "center",

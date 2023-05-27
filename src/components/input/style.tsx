@@ -1,4 +1,17 @@
+import { keyframes } from "@stitches/react";
 import { styled } from "../../style/stitches.config";
+
+const neonUp = keyframes({
+  "0%": {
+    boxShadow: "0 0 0 rgba(255, 105, 180, 0.8)",
+  },
+  "50%": {
+    boxShadow: "0 0 15px rgba(255, 20, 147, 0.9)",
+  },
+  "100%": {
+    boxShadow: "0 0 0 rgba(255, 105, 180, 0.8)",
+  },
+});
 
 export const StyledInput = styled("fieldset", {
   display: "flex",
@@ -28,6 +41,7 @@ export const StyledInput = styled("fieldset", {
     },
     "&:focus": {
       border: "2px solid $indigo12",
+      animation: `${neonUp} 1s infinite`,
     },
   },
 });
