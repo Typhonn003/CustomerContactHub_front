@@ -15,16 +15,16 @@ export const globalStyles = globalCss({
     height: "100vh",
   },
   body: {
-    backgroundColor: "$crimson1",
-    color: "$crimson12",
+    backgroundColor: "$indigo1",
+    color: "$indigo12",
     overflowX: "hidden",
   },
   "body, input, button, textarea": {
-    fontFamily: "Inter",
+    fontFamily: "'Inter', sans-serif",
     fontSize: "1.6rem",
   },
   "h1, h2, h3, h4, h5, h6, strong": {
-    fontWeight: 500,
+    fontWeight: 700,
   },
   "@media (min-width: 700px)": {
     ":root": {
