@@ -51,5 +51,8 @@ export const StyledMain = styled("main", {
   },
   "& a": {
     color: "$pink10",
+    "&:hover": {
+      color: "$pink8",
+    },
   },
 });
