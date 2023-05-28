@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { RegisterData, schema } from "./validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegister } from "../../hooks";
-import { Button, Input, Main } from "../../components";
+import { Button, Input, Logo, Main } from "../../components";
 import { Link } from "react-router-dom";
 
 export function Register() {
@@ -19,7 +19,7 @@ export function Register() {
 
   return (
     <Main>
-      <h1>HubLinkup</h1>
+      <Logo size="large">HubLinkup</Logo>
 
       <form onSubmit={handleSubmit(userRegister)}>
         <h2>Cadastro</h2>

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { LoginData, schema } from "./validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks";
-import { Button, Input, Main } from "../../components";
+import { Button, Input, Logo, Main } from "../../components";
 import { Link } from "react-router-dom";
 
 export function Login() {
@@ -19,7 +19,7 @@ export function Login() {
 
   return (
     <Main>
-      <h1>HubLinkup</h1>
+      <Logo size="large">HubLinkup</Logo>
 
       <form onSubmit={handleSubmit(login)}>
         <h2>Login</h2>

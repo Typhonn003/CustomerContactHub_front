@@ -1,13 +1,4 @@
-import { keyframes, styled } from "../../style/stitches.config";
-
-const glitchTitle = keyframes({
-  "0%": {
-    textShadow: "2px 2px 0px #e30c9f, -2px -2px 0px #164b9b",
-  },
-  "100%": {
-    textShadow: "2px 2px 0px #164b9b, -2px -2px 0px #e30c9f",
-  },
-});
+import { styled } from "../../style/stitches.config";
 
 export const StyledMain = styled("main", {
   height: "100vh",
@@ -15,13 +6,6 @@ export const StyledMain = styled("main", {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  "& h1": {
-    textAlign: "center",
-    color: "White",
-    marginBottom: "2rem",
-    cursor: "default",
-    animation: `${glitchTitle} .1s infinite`,
-  },
   "& h2": {
     textAlign: "center",
     color: "$indigo12",

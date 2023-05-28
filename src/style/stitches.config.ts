@@ -20,4 +20,8 @@ export const {
       2: "6px",
     },
   },
+  media: {
+    media1: "(min-width: 768px)",
+  },
+  prefix: "stitches",
 });
