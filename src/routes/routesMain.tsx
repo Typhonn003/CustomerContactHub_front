@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Register, Login, Dashboard } from "../pages";
 import { RegisterProvider } from "../contexts/RegisterProvider";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 
 export function RoutesMain() {
   return (
@@ -14,7 +15,9 @@ export function RoutesMain() {
         }
       />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );

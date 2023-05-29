@@ -61,6 +61,15 @@ export const UserInfo = styled("div", {
   },
 });
 
+export const NoContacts = styled("div", {
+  width: "100%",
+  backgroundColor: "$indigo2",
+  borderRadius: "$1",
+  border: "1px solid $indigo5",
+  padding: "2rem",
+  textAlign: "center",
+});
+
 export const ContactsList = styled("ul", {
   padding: "2rem",
   width: "100%",

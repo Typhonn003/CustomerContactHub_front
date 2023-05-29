@@ -1,7 +1,17 @@
 import { Button, Logo } from "../../components";
-import { ContactCard, StyledHeader, StyledMain, ContactsList, UserInfo } from "./style";
+import {
+  ContactCard,
+  StyledHeader,
+  StyledMain,
+  ContactsList,
+  UserInfo,
+  NoContacts,
+} from "./style";
+import { useAuth } from "../../hooks";
 
 export function Dashboard() {
+  const { userData } = useAuth();
+
   return (
     <>
       <StyledHeader>
@@ -13,7 +23,7 @@ export function Dashboard() {
       <StyledMain>
         <UserInfo>
           <div>
-            <h2>Bom dia, Fulano!</h2>
+            <h2>Bom dia, {userData?.fullName.split(" ")[0]}!</h2>
             <p>Que bom ver você aqui outra vez!</p>
           </div>
           <div>
@@ -21,15 +31,22 @@ export function Dashboard() {
             <Button color="indigo">Editar perfil</Button>
           </div>
         </UserInfo>
-        <ContactsList>
-          {/* <h2>Sem contatos? =(</h2> */}
-          {/* <ContactCard>
-            <h2>Contact Named One</h2>
-            <p>contactone@mail.com</p>
-            <p>(XX) XXXXX-XXXX</p>
-            <Button color="pink">Editar contato</Button>
-          </ContactCard> */}
-        </ContactsList>
+        {userData.contacts.length > 0 ? (
+          <ContactsList>
+            {userData.contacts.map((contact) => (
+              <ContactCard key={contact.id}>
+                <h2>{contact.fullName}</h2>
+                <p>{contact.email}</p>
+                <p>{contact.phoneNumber}</p>
+                <Button color="pink">Editar contato</Button>
+              </ContactCard>
+            ))}
+          </ContactsList>
+        ) : (
+          <NoContacts>
+            <h2>Você ainda não tem contatos? =(</h2>
+          </NoContacts>
+        )}
       </StyledMain>
     </>
   );
