@@ -10,14 +10,14 @@ import {
 import { useAuth } from "../../hooks";
 
 export function Dashboard() {
-  const { userData } = useAuth();
+  const { userData, logout } = useAuth();
 
   return (
     <>
       <StyledHeader>
         <div>
           <Logo>HubLinkup</Logo>
-          <Button type="button">Sair</Button>
+          <Button type="button" onClick={logout}>Sair</Button>
         </div>
       </StyledHeader>
       <StyledMain>

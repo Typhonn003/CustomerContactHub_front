@@ -32,6 +32,7 @@ interface AuthContextValues {
   tokenLoading: boolean;
   userData: Customer;
   userExists: boolean;
+  logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextValues>(
@@ -88,9 +89,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  function logout() {
+    localStorage.clear();
+    navigate("/login");
+  }
+
   return (
     <AuthContext.Provider
-      value={{ login, loading, tokenLoading, userData, userExists }}
+      value={{ login, loading, tokenLoading, userData, userExists, logout }}
     >
       {children}
     </AuthContext.Provider>
