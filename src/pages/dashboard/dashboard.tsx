@@ -1,4 +1,4 @@
-import { Button, Logo } from "../../components";
+import { Button, Logo, AddContactModal } from "../../components";
 import {
   ContactCard,
   StyledHeader,
@@ -8,16 +8,20 @@ import {
   NoContacts,
 } from "./style";
 import { useAuth } from "../../hooks";
+import { useContact } from "../../hooks/useContact";
 
 export function Dashboard() {
-  const { userData, logout } = useAuth();
+  const { userData, userContacts, logout } = useAuth();
+  const { addNewContactModal, setAddNewContactModal } = useContact();
 
   return (
     <>
       <StyledHeader>
         <div>
           <Logo>HubLinkup</Logo>
-          <Button type="button" onClick={logout}>Sair</Button>
+          <Button type="button" onClick={logout}>
+            Sair
+          </Button>
         </div>
       </StyledHeader>
       <StyledMain>
@@ -27,13 +31,15 @@ export function Dashboard() {
             <p>Que bom ver você aqui outra vez!</p>
           </div>
           <div>
-            <Button color="pink">Adicionar contato</Button>
+            <Button color="pink" onClick={() => setAddNewContactModal(true)}>
+              Adicionar contato
+            </Button>
             <Button color="indigo">Editar perfil</Button>
           </div>
         </UserInfo>
-        {userData.contacts.length > 0 ? (
+        {userContacts.length > 0 ? (
           <ContactsList>
-            {userData.contacts.map((contact) => (
+            {userContacts.map((contact) => (
               <ContactCard key={contact.id}>
                 <h2>{contact.fullName}</h2>
                 <p>{contact.email}</p>
@@ -48,6 +54,7 @@ export function Dashboard() {
           </NoContacts>
         )}
       </StyledMain>
+      {addNewContactModal ? <AddContactModal /> : null}
     </>
   );
 }

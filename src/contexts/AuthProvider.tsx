@@ -1,4 +1,11 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useEffect,
+  useState,
+} from "react";
 import { LoginData } from "../pages/login/validators";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +38,8 @@ interface AuthContextValues {
   loading: boolean;
   tokenLoading: boolean;
   userData: Customer;
+  setUserContacts: Dispatch<SetStateAction<Contact[]>>;
+  userContacts: Contact[];
   userExists: boolean;
   logout: () => void;
 }
@@ -44,6 +53,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState(false);
   const [tokenLoading, setTokenLoading] = useState(true);
   const [userData, setUserData] = useState({} as Customer);
+  const [userContacts, setUserContacts] = useState<Contact[]>([]);
   const [userExists, setUserExists] = useState(false);
 
   useEffect(() => {
@@ -58,6 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const { data, status } = await api.get("customers/profile");
         if (status === 200) {
           setUserData(data);
+          setUserContacts(data.contacts);
           setUserExists(true);
         }
       } catch (error) {
@@ -78,6 +89,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       const { data: profile } = await api.get("customers/profile");
       setUserData(profile);
+      setUserContacts(profile.contacts);
       setUserExists(true);
 
       navigate("dashboard");
@@ -96,7 +108,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   return (
     <AuthContext.Provider
-      value={{ login, loading, tokenLoading, userData, userExists, logout }}
+      value={{
+        login,
+        loading,
+        tokenLoading,
+        userData,
+        setUserContacts,
+        userContacts,
+        userExists,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>
