@@ -1,6 +1,11 @@
-import { Button, Logo, AddContactModal } from "../../components";
 import {
-  ContactCard,
+  Button,
+  Logo,
+  AddContactModal,
+  EditContactModal,
+  Card,
+} from "../../components";
+import {
   StyledHeader,
   StyledMain,
   ContactsList,
@@ -12,7 +17,12 @@ import { useContact } from "../../hooks/useContact";
 
 export function Dashboard() {
   const { userData, userContacts, logout } = useAuth();
-  const { addNewContactModal, setAddNewContactModal } = useContact();
+  const {
+    addNewContactModal,
+    setAddNewContactModal,
+    editContactModal,
+    currentContact,
+  } = useContact();
 
   return (
     <>
@@ -40,12 +50,7 @@ export function Dashboard() {
         {userContacts.length > 0 ? (
           <ContactsList>
             {userContacts.map((contact) => (
-              <ContactCard key={contact.id}>
-                <h2>{contact.fullName}</h2>
-                <p>{contact.email}</p>
-                <p>{contact.phoneNumber}</p>
-                <Button color="pink">Editar contato</Button>
-              </ContactCard>
+              <Card contact={contact} />
             ))}
           </ContactsList>
         ) : (
@@ -55,6 +60,7 @@ export function Dashboard() {
         )}
       </StyledMain>
       {addNewContactModal ? <AddContactModal /> : null}
+      {editContactModal ? <EditContactModal contact={currentContact} /> : null}
     </>
   );
 }

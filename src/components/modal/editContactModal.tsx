@@ -2,11 +2,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "..";
 import { useContact } from "../../hooks";
 import { StyledModal } from "./style";
-import { ContactData, contactSchema } from "../../pages/dashboard/validators";
+import {
+  ContactData,
+  contactSchema,
+  FullContactData,
+} from "../../pages/dashboard/validators";
 import { useForm } from "react-hook-form";
 
-export function AddContactModal() {
-  const { setAddNewContactModal, registerContact, loading } = useContact();
+interface EditContactProps {
+  contact: FullContactData;
+}
+
+export function EditContactModal({ contact }: EditContactProps) {
+  const { contactEdit, setEditContactModal, loading } = useContact();
 
   const {
     register,
@@ -19,10 +27,10 @@ export function AddContactModal() {
 
   return (
     <StyledModal>
-      <form onSubmit={handleSubmit(registerContact)}>
+      <form onSubmit={handleSubmit(contactEdit)}>
         <div>
-          <h2>Adicionar contato</h2>
-          <Button type="button" onClick={() => setAddNewContactModal(false)}>
+          <h2>Editar contato</h2>
+          <Button type="button" onClick={() => setEditContactModal(false)}>
             Fechar
           </Button>
         </div>
@@ -30,7 +38,7 @@ export function AddContactModal() {
           id="fullName"
           type="text"
           label="Nome completo"
-          placeholder="Nome do contato"
+          defaultValue={contact.fullName}
           register={register("fullName")}
           loading={loading}
           error={
@@ -41,7 +49,7 @@ export function AddContactModal() {
           id="email"
           type="email"
           label="Email"
-          placeholder="Email do contato"
+          defaultValue={contact.email}
           register={register("email")}
           loading={loading}
           error={errors.email?.message && <span>{errors.email.message}</span>}
@@ -50,7 +58,7 @@ export function AddContactModal() {
           id="phone"
           type="tel"
           label="Telefone"
-          placeholder="Telefone do contato"
+          defaultValue={contact.phoneNumber}
           register={register("phoneNumber")}
           loading={loading}
           error={
@@ -60,7 +68,7 @@ export function AddContactModal() {
           }
         />
         <Button type="submit" color="pink">
-          Adicionar
+          Editar
         </Button>
       </form>
     </StyledModal>

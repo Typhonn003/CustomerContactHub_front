@@ -19,3 +19,11 @@ export const contactSchema = z.object({
 });
 
 export type ContactData = z.infer<typeof contactSchema>;
+
+export const FullContactSchema = contactSchema.extend({
+  id: z.string(),
+  registrationDate: z.string(),
+  customerId: z.string(),
+});
+
+export type FullContactData = z.infer<typeof FullContactSchema>;
