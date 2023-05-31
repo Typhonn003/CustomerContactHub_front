@@ -14,7 +14,7 @@ interface EditContactProps {
 }
 
 export function EditContactModal({ contact }: EditContactProps) {
-  const { contactEdit, setEditContactModal, loading } = useContact();
+  const { contactEdit, setEditContactModal, deleteContact } = useContact();
 
   const {
     register,
@@ -40,7 +40,6 @@ export function EditContactModal({ contact }: EditContactProps) {
           label="Nome completo"
           defaultValue={contact.fullName}
           register={register("fullName")}
-          loading={loading}
           error={
             errors.fullName?.message && <span>{errors.fullName.message}</span>
           }
@@ -51,7 +50,6 @@ export function EditContactModal({ contact }: EditContactProps) {
           label="Email"
           defaultValue={contact.email}
           register={register("email")}
-          loading={loading}
           error={errors.email?.message && <span>{errors.email.message}</span>}
         />
         <Input
@@ -60,16 +58,18 @@ export function EditContactModal({ contact }: EditContactProps) {
           label="Telefone"
           defaultValue={contact.phoneNumber}
           register={register("phoneNumber")}
-          loading={loading}
           error={
             errors.phoneNumber?.message && (
               <span>{errors.phoneNumber.message}</span>
             )
           }
         />
-        <Button type="submit" color="pink">
-          Editar
-        </Button>
+        <div>
+          <Button color="pink" type="button" onClick={() => deleteContact()}>
+            Excluir
+          </Button>
+          <Button type="submit">Editar</Button>
+        </div>
       </form>
     </StyledModal>
   );

@@ -11,7 +11,7 @@ export function Card({ contact }: CardProps) {
   const { setEditContactModal, setCurrentContact } = useContact();
 
   return (
-    <ContactCard key={contact.id}>
+    <ContactCard>
       <h2>{contact.fullName}</h2>
       <p>{contact.email}</p>
       <p>{contact.phoneNumber}</p>

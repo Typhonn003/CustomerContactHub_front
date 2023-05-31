@@ -11,6 +11,7 @@ interface ContactProviderProps {
 interface ContactProviderValues {
   registerContact: (data: ContactData) => void;
   contactEdit: (data: ContactData) => void;
+  deleteContact: () => void;
   addNewContactModal: boolean;
   setAddNewContactModal: (value: boolean) => void;
   editContactModal: boolean;
@@ -50,7 +51,6 @@ export function ContactProvider({ children }: ContactProviderProps) {
 
   async function contactEdit(data: ContactData) {
     try {
-      setLoading(true);
       const response = await api.patch(`/contacts/${currentContact.id}`, data);
 
       const filteredContacts = userContacts.map((contact) => {
@@ -66,8 +66,24 @@ export function ContactProvider({ children }: ContactProviderProps) {
     } catch (error) {
       console.error(error);
       toast.error("Email de contato já cadastrado");
-    } finally {
-      setLoading(false);
+    }
+  }
+
+  async function deleteContact() {
+    try {
+      await api.delete(`/contacts/${currentContact.id}`);
+
+      const filteredContacts = userContacts.filter((contact) => {
+        return contact.id !== currentContact.id;
+      });
+
+      setUserContacts(filteredContacts);
+      setEditContactModal(false);
+
+      toast.success("Contato deletado com sucesso");
+    } catch (error) {
+      console.error(error);
+      toast.error("Não foi possível deletar o contato");
     }
   }
 
@@ -76,6 +92,7 @@ export function ContactProvider({ children }: ContactProviderProps) {
       value={{
         registerContact,
         contactEdit,
+        deleteContact,
         addNewContactModal,
         setAddNewContactModal,
         editContactModal,

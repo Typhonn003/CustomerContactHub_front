@@ -50,7 +50,7 @@ export function Dashboard() {
         {userContacts.length > 0 ? (
           <ContactsList>
             {userContacts.map((contact) => (
-              <Card contact={contact} />
+              <Card contact={contact} key={contact.id} />
             ))}
           </ContactsList>
         ) : (
