@@ -15,6 +15,21 @@ import {
 import { useAuth } from "../../hooks";
 import { useContact } from "../../hooks/useContact";
 
+function timeMessage(): string {
+  const time = new Date();
+  const hour = time.getHours();
+
+  if (6 <= hour && hour < 12) {
+    return "Bom dia";
+  } else if (12 <= hour && hour < 18) {
+    return "Boa tarde";
+  } else if (18 <= hour && hour < 24) {
+    return "Boa noite";
+  } else {
+    return "Boa madrugada";
+  }
+}
+
 export function Dashboard() {
   const { userData, userContacts, logout } = useAuth();
   const {
@@ -37,14 +52,15 @@ export function Dashboard() {
       <StyledMain>
         <UserInfo>
           <div>
-            <h2>Bom dia, {userData?.fullName.split(" ")[0]}!</h2>
+            <h2>
+              {timeMessage()}, {userData?.fullName.split(" ")[0]}!
+            </h2>
             <p>Que bom ver você aqui outra vez!</p>
           </div>
           <div>
             <Button color="pink" onClick={() => setAddNewContactModal(true)}>
               Adicionar contato
             </Button>
-            <Button color="indigo">Editar perfil</Button>
           </div>
         </UserInfo>
         {userContacts.length > 0 ? (
