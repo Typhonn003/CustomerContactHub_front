@@ -1,5 +1,5 @@
 import { createStitches } from "@stitches/react";
-import { crimsonDark } from "@radix-ui/colors";
+import { indigoDark, pinkDark } from "@radix-ui/colors";
 
 export const {
   styled,
@@ -12,7 +12,16 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      ...crimsonDark,
+      ...indigoDark,
+      ...pinkDark,
+    },
+    radii: {
+      1: "4px",
+      2: "6px",
     },
   },
+  media: {
+    media1: "(min-width: 768px)",
+  },
+  prefix: "stitches",
 });
