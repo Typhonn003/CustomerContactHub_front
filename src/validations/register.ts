@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const phoneRegex = /^(\(\d{2}\) )?\d{4,5}-\d{4}$/;
 
-export const schema = z.object({
+export const registerSchema = z.object({
   fullName: z
     .string()
     .min(10, "Nome mínimo de 10 caracteres*")
@@ -28,4 +28,4 @@ export const schema = z.object({
   }),
 });
 
-export type RegisterData = z.infer<typeof schema>;
+export type RegisterData = z.infer<typeof registerSchema>;

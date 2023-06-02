@@ -1,6 +1,6 @@
 import { Button } from "..";
 import { useContact } from "../../hooks";
-import { FullContactData } from "../../pages/dashboard/validators";
+import { FullContactData } from "../../validations/contact";
 import { ContactCard } from "./style";
 
 interface CardProps {

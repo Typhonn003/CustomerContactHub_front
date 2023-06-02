@@ -2,12 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "..";
 import { useContact } from "../../hooks";
 import { StyledModal } from "./style";
-import {
-  ContactData,
-  contactSchema,
-  FullContactData,
-} from "../../pages/dashboard/validators";
 import { useForm } from "react-hook-form";
+import { ContactData, FullContactData, contactSchema } from "../../validations/contact";
 
 interface EditContactProps {
   contact: FullContactData;
@@ -66,9 +62,9 @@ export function EditContactModal({ contact }: EditContactProps) {
         />
         <div>
           <Button color="pink" type="button" onClick={() => deleteContact()}>
-            Excluir
+            Excluir contato
           </Button>
-          <Button type="submit">Editar</Button>
+          <Button type="submit">Salvar</Button>
         </div>
       </form>
     </StyledModal>

@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { RegisterData, schema } from "./validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegister } from "../../hooks";
 import { Button, Input, Logo, Main } from "../../components";
 import { Link } from "react-router-dom";
+import { RegisterData, registerSchema } from "../../validations/register";
 
 export function Register() {
   const {
@@ -11,7 +11,7 @@ export function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(registerSchema),
     mode: "onChange",
   });
 
