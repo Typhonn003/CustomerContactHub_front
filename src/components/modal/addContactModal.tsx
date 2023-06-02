@@ -30,7 +30,7 @@ export function AddContactModal() {
           id="fullName"
           type="text"
           label="Nome completo"
-          placeholder="Nome do contato"
+          placeholder="Digite o nome do contato"
           register={register("fullName")}
           loading={loading}
           error={
@@ -41,7 +41,7 @@ export function AddContactModal() {
           id="email"
           type="email"
           label="Email"
-          placeholder="Email do contato"
+          placeholder="Digite o email do contato"
           register={register("email")}
           loading={loading}
           error={errors.email?.message && <span>{errors.email.message}</span>}
@@ -50,7 +50,7 @@ export function AddContactModal() {
           id="phone"
           type="tel"
           label="Telefone"
-          placeholder="Telefone do contato"
+          placeholder="Digite o telefone do contato"
           register={register("phoneNumber")}
           loading={loading}
           error={
