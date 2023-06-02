@@ -1,7 +1,5 @@
 import {
-  Dispatch,
   ReactNode,
-  SetStateAction,
   createContext,
   useEffect,
   useState,
@@ -38,7 +36,8 @@ interface AuthContextValues {
   loading: boolean;
   tokenLoading: boolean;
   userData: Customer;
-  setUserContacts: Dispatch<SetStateAction<Contact[]>>;
+  setUserData: (value: Customer) => void
+  setUserContacts: (value: Contact[]) => void;
   userContacts: Contact[];
   userExists: boolean;
   logout: () => void;
@@ -113,6 +112,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         loading,
         tokenLoading,
         userData,
+        setUserData,
         setUserContacts,
         userContacts,
         userExists,
