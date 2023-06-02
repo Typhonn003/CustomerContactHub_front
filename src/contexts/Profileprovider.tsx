@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useState } from "react";
-import { UserData } from "../pages/dashboard/validators";
 import { api } from "../services/api";
 import { useAuth } from "../hooks";
 import { toast } from "react-toastify";
+import { UserData } from "../validations/user";
 
 interface ProfileProviderProps {
   children: ReactNode;

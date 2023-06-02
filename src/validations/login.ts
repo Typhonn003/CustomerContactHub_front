@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const schema = z.object({
+export const loginSchema = z.object({
   email: z.string().email("Email inválido*"),
   password: z
     .string()
@@ -8,4 +8,4 @@ export const schema = z.object({
     .min(8, "Tamanho mínimo de 8 caracteres*"),
 });
 
-export type LoginData = z.infer<typeof schema>;
+export type LoginData = z.infer<typeof loginSchema>;

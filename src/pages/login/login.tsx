@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { LoginData, schema } from "./validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks";
 import { Button, Input, Logo, Main } from "../../components";
 import { Link } from "react-router-dom";
+import { LoginData, loginSchema } from "../../validations/login";
 
 export function Login() {
   const {
@@ -11,7 +11,7 @@ export function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
 

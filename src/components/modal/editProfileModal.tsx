@@ -2,12 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "..";
 import { useProfile } from "../../hooks";
 import { StyledModal } from "./style";
-import {
-  FullUserData,
-  UserData,
-  userSchema,
-} from "../../pages/dashboard/validators";
 import { useForm } from "react-hook-form";
+import { FullUserData, UserData, userSchema } from "../../validations/user";
 
 interface EditProfileProps {
   customer: FullUserData;

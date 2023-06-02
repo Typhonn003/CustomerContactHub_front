@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useState } from "react";
-import { ContactData, FullContactData } from "../pages/dashboard/validators";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks";
+import { ContactData, FullContactData } from "../validations/contact";
 
 interface ContactProviderProps {
   children: ReactNode;

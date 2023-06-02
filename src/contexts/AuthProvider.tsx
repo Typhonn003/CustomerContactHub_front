@@ -1,44 +1,23 @@
-import {
-  ReactNode,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
-import { LoginData } from "../pages/login/validators";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { LoginData } from "../validations/login";
+import { FullUserData } from "../validations/user";
+import { FullContactData } from "../validations/contact";
 
 interface AuthProviderProps {
   children: ReactNode;
-}
-
-interface Contact {
-  id: string;
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  registrationDate: string;
-  customerId: string;
-}
-
-interface Customer {
-  id: string;
-  registrationDate: string;
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  contacts: Contact[];
 }
 
 interface AuthContextValues {
   login: (data: LoginData) => void;
   loading: boolean;
   tokenLoading: boolean;
-  userData: Customer;
-  setUserData: (value: Customer) => void
-  setUserContacts: (value: Contact[]) => void;
-  userContacts: Contact[];
+  userData: FullUserData;
+  setUserData: (value: FullUserData) => void;
+  setUserContacts: (value: FullContactData[]) => void;
+  userContacts: FullContactData[];
   userExists: boolean;
   logout: () => void;
 }
@@ -51,8 +30,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [tokenLoading, setTokenLoading] = useState(true);
-  const [userData, setUserData] = useState({} as Customer);
-  const [userContacts, setUserContacts] = useState<Contact[]>([]);
+  const [userData, setUserData] = useState({} as FullUserData);
+  const [userContacts, setUserContacts] = useState<FullContactData[]>([]);
   const [userExists, setUserExists] = useState(false);
 
   useEffect(() => {

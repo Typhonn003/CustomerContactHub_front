@@ -2,8 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "..";
 import { useContact } from "../../hooks";
 import { StyledModal } from "./style";
-import { ContactData, contactSchema } from "../../pages/dashboard/validators";
 import { useForm } from "react-hook-form";
+import { ContactData, contactSchema } from "../../validations/contact";
 
 export function AddContactModal() {
   const { setAddNewContactModal, registerContact, loading } = useContact();

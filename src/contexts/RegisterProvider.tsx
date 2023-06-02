@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useState } from "react";
-import { RegisterData } from "../pages/register/validators";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RegisterData } from "../validations/register";
 
 interface RegisterProviderProps {
   children: ReactNode;
