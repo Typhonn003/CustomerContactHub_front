@@ -4,6 +4,7 @@ import {
   AddContactModal,
   EditContactModal,
   Card,
+  EditProfileModal,
 } from "../../components";
 import {
   StyledHeader,
@@ -12,7 +13,7 @@ import {
   UserInfo,
   NoContacts,
 } from "./style";
-import { useAuth } from "../../hooks";
+import { useAuth, useProfile } from "../../hooks";
 import { useContact } from "../../hooks/useContact";
 
 function timeMessage(): string {
@@ -32,6 +33,7 @@ function timeMessage(): string {
 
 export function Dashboard() {
   const { userData, userContacts, logout } = useAuth();
+  const { editProfileModal, setEditProfileModal } = useProfile();
   const {
     addNewContactModal,
     setAddNewContactModal,
@@ -61,6 +63,9 @@ export function Dashboard() {
             <Button color="pink" onClick={() => setAddNewContactModal(true)}>
               Adicionar contato
             </Button>
+            <Button onClick={() => setEditProfileModal(true)}>
+              Editar perfil
+            </Button>
           </div>
         </UserInfo>
         {userContacts.length > 0 ? (
@@ -77,6 +82,7 @@ export function Dashboard() {
       </StyledMain>
       {addNewContactModal ? <AddContactModal /> : null}
       {editContactModal ? <EditContactModal contact={currentContact} /> : null}
+      {editProfileModal ? <EditProfileModal customer={userData} /> : null}
     </>
   );
 }

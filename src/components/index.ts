@@ -5,5 +5,6 @@ import { Logo } from "./logo/logo";
 import { Main } from "./main/main";
 import { AddContactModal } from "./modal/addContactModal";
 import { EditContactModal } from "./modal/editContactModal";
+import { EditProfileModal } from "./modal/editProfileModal";
 
-export { Input, Button, Main, Logo, AddContactModal, EditContactModal, Card };
+export { Input, Button, Main, Logo, AddContactModal, EditContactModal, Card, EditProfileModal };

@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Register, Login, Dashboard } from "../pages";
 import { RegisterProvider } from "../contexts/RegisterProvider";
 import { ProtectedRoutes } from "./ProtectedRoutes";
-import { ContactProvider } from "../contexts";
+import { ContactProvider, ProfileProvider } from "../contexts";
 
 export function RoutesMain() {
   return (
@@ -20,9 +20,11 @@ export function RoutesMain() {
         <Route
           path="/dashboard"
           element={
-            <ContactProvider>
-              <Dashboard />
-            </ContactProvider>
+            <ProfileProvider>
+              <ContactProvider>
+                <Dashboard />
+              </ContactProvider>
+            </ProfileProvider>
           }
         />
       </Route>
