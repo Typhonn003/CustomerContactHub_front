@@ -34,7 +34,7 @@ export function EditProfileModal({ customer }: EditProfileProps) {
           id="fullName"
           type="text"
           label="Nome completo"
-          placeholder="Digite seu nome"
+          placeholder="Ex: Diego de Lima"
           defaultValue={customer.fullName}
           register={register("fullName")}
           error={
@@ -45,7 +45,7 @@ export function EditProfileModal({ customer }: EditProfileProps) {
           id="email"
           type="email"
           label="Email"
-          placeholder="Digite seu email"
+          placeholder="Ex: diegolima@mail.com"
           defaultValue={customer.email}
           register={register("email")}
           error={errors.email?.message && <span>{errors.email.message}</span>}
@@ -54,7 +54,7 @@ export function EditProfileModal({ customer }: EditProfileProps) {
           id="phone"
           type="tel"
           label="Telefone"
-          placeholder="Digite seu telefone"
+          placeholder="(12) 91234-5678"
           defaultValue={customer.phoneNumber}
           register={register("phoneNumber")}
           error={

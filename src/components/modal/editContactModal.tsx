@@ -34,7 +34,7 @@ export function EditContactModal({ contact }: EditContactProps) {
           id="fullName"
           type="text"
           label="Nome completo"
-          placeholder="Digite o nome do contato"
+          placeholder="Ex: Diego de Lima"
           defaultValue={contact.fullName}
           register={register("fullName")}
           error={
@@ -45,7 +45,7 @@ export function EditContactModal({ contact }: EditContactProps) {
           id="email"
           type="email"
           label="Email"
-          placeholder="Digite o email do contato"
+          placeholder="Ex: diegolima@mail.com"
           defaultValue={contact.email}
           register={register("email")}
           error={errors.email?.message && <span>{errors.email.message}</span>}
@@ -54,7 +54,7 @@ export function EditContactModal({ contact }: EditContactProps) {
           id="phone"
           type="tel"
           label="Telefone"
-          placeholder="Digite o telefone do contato"
+          placeholder="(12) 91234-5678"
           defaultValue={contact.phoneNumber}
           register={register("phoneNumber")}
           error={

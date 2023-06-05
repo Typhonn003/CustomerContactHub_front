@@ -27,7 +27,7 @@ export function Register() {
           id="fullName"
           type="text"
           label="Nome completo"
-          placeholder="Digite seu nome"
+          placeholder="Ex: Diego de Lima"
           register={register("fullName")}
           loading={loading}
           error={
@@ -38,7 +38,7 @@ export function Register() {
           id="email"
           type="email"
           label="Email"
-          placeholder="Digite seu email"
+          placeholder="Ex: diegolima@mail.com"
           register={register("email")}
           loading={loading}
           error={errors.email?.message && <span>{errors.email.message}</span>}
@@ -58,7 +58,7 @@ export function Register() {
           id="phone"
           type="tel"
           label="Telefone"
-          placeholder="Digite seu telefone"
+          placeholder="(12) 91234-5678"
           register={register("phoneNumber")}
           loading={loading}
           error={
